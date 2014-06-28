@@ -34,7 +34,6 @@ player addMagazine "15Rnd_9x19_M9";
 player addMagazine 'ItemBandage';
 player addMagazine 'ItemBloodbag';
 player addMagazine 'ItemMorphine';
-player addWeapon   'ItemToolbox';
 reload player;
 player selectWeapon "M9";
 player setVehicleAmmo 1;

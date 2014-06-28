@@ -34,7 +34,6 @@ player addMagazine "15Rnd_9x19_M9SD";
 player addMagazine 'FoodSteakCooked';
 player addMagazine 'FoodSteakCooked';
 player addMagazine 'ItemWaterbottle';
-player addWeapon   'ItemToolbox';
 reload player;
 player selectWeapon "M9SD";
 player setVehicleAmmo 1;

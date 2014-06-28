@@ -34,7 +34,6 @@ player addMagazine "17Rnd_9x19_glock17";
 player addWeapon   'ItemMachete';
 player addMagazine 'ItemBandage';
 player addMagazine 'ItemPainkiller';
-player addWeapon   'ItemToolbox';
 reload player;
 player selectWeapon "glock17_EP1";
 player setVehicleAmmo 1;

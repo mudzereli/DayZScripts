@@ -34,7 +34,6 @@ player addMagazine "6Rnd_45ACP";
 player addWeapon 'ItemHatchet_DZE';
 player addWeapon 'ItemMatchbox_DZE';
 player addWeapon 'ItemKnife';
-player addWeapon   'ItemToolbox';
 reload player;
 player selectWeapon "revolver_EP1";
 player setVehicleAmmo 1;
