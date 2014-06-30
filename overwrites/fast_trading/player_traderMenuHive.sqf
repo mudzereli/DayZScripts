@@ -113,7 +113,7 @@ TraderDialogLoadItemList = {
 
         //### BEGIN MODIFIED CODE: faster trading
         //_File = "\z\addons\dayz_code\actions\" + _afile + ".sqf";
-        _File = "overwrites\" + _afile + ".sqf";
+        _File = "overwrites\fast_trading\" + _afile + ".sqf";
         //### END MODIFIED CODE: faster trading
             
         _count = 0;
