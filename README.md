@@ -92,16 +92,3 @@ DayZ Scripts Collection
  4. add this line to your mission file init.sqf
       
 ```call compile preprocessFileLineNumbers "addons\takeclothes\init.sqf";```
-
------
-
-##SLOW ZOMBIES
-#####credits: mudzereli
-####This makes zombies walk instead of run. Since it's an overwrite and not an addon, it only works in epoch v 1.0.5.1
-###Installation
- 1. download the zip file
- 2. create an overwrites folder in your mission file if you don't already have one
- 3. copy the slow_zombies folder from the overwrites folder in the zip file to the overwrites folder in your mission file
- 4. add this line to your mission file init.sqf
-      
-```call compile preprocessFileLineNumbers "overwrites\slow_zombies\init.sqf";```
