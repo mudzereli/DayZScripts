@@ -1,6 +1,6 @@
 Mudzereli's DayZ Scripts Collection
 ====================================
-###### note: I am NOT the original author of all of these scripts. I have heavily modified a lot of these scripts. It's my intent to give credit where it's due so I've tried to credit the original author where possible.
+###### note: I am NOT the original author of all of these scripts. The reason I have these scripts here is that I have heavily modified a lot of these scripts and created others myself. It's my intent to give credit where it's due so I've tried to credit the original author where possible.
 
 ###All the files are packaged in one zip but you can add the scripts you want by following the instructions for each script.
 
