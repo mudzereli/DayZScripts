@@ -64,7 +64,7 @@ if(_buy_o_sell == "sell") then {
 	};
 	if(_isToolBelt || _isBinocs) then {
 		_abort = (_configName in (weapons player));
-		_msg = "Drop || sell your current toolbelt item before you can buy a new one.";
+		_msg = "Drop or sell your current toolbelt item before you can buy a new one.";
 	};
 };
 
