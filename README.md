@@ -56,20 +56,6 @@ DayZ Scripts Collection
  
 -----
 
-##DEPLOYABLE BIKE
-#####credits: mudzereli/inspired by player2
-####This adds a deployable bike option to the scroll wheel
-###Installation
- 1. install CLICK ACTIONS overwrite (see below)
- 2. download the zip file
- 3. create an addons folder in your mission file if you don't already have one
- 4. copy the bike folder from the addons folder in the zip file to the addons folder in your mission file
- 5. add this line to the end of your mission file init.sqf
-      
-```call compile preprocessFileLineNumbers "addons\bike\init.sqf";```
-
------
-
 ##CLICK ACTIONS
 #####credits: mudzereli
 ####This is used to register right click actions on items. Required by other addons. Is an overwrite so only works with Epoch 1.0.5.1
