@@ -14,7 +14,7 @@ DayZ Scripts Collection
  1. download the zip file
  2. create an **overwrites** folder in your mission file if you don't already have one
  3. copy the fast_trading folder from the **overwrites** folder in the zip file to the addons folder in your mission file
- 4. add this line to the bottom of your mission file init.sqf
+ 4. add this line to the end of the bottom of your mission file init.sqf
 
 ```call compile preprocessFileLineNumbers "overwrites\fast_trading\player_traderMenuHive.sqf";```
 
@@ -28,7 +28,7 @@ DayZ Scripts Collection
  2. create an addons folder in your mission file if you don't already have one
  3. copy the plotbuff folder from the addons folder in the zip file to the addons folder in your mission file
  4. edit the config.sqf file in the plotbuff folder of your mission file to your liking
- 5. add this line to your mission file init.sqf
+ 5. add this line to the end of your mission file init.sqf
 
 ```call compile preprocessFileLineNumbers "addons\plotbuff\init.sqf";```
 
@@ -50,23 +50,37 @@ DayZ Scripts Collection
  2. create an addons folder in your mission file if you don't already have one
  3. copy the buildings folder from the addons folder in the zip file to the addons folder in your mission file
  4. optionally commment out any buildings you don't want loaded in init.sqf
- 5. add this line to your mission file init.sqf
+ 5. add this line to the end of your mission file init.sqf
 
 ```call compile preprocessFileLineNumbers "addons\buildings\init.sqf";```
  
 -----
 
 ##DEPLOYABLE BIKE
-#####credits: player2
+#####credits: mudzereli/inspired by player2
 ####This adds a deployable bike option to the scroll wheel
 ###Installation
- 1. download the zip file
- 2. create an addons folder in your mission file if you don't already have one
- 3. copy the bike folder from the addons folder in the zip file to the addons folder in your mission file
- 4. add this line to your mission file init.sqf
+ 1. install CLICK ACTIONS overwrite (see below)
+ 2. download the zip file
+ 3. create an addons folder in your mission file if you don't already have one
+ 4. copy the bike folder from the addons folder in the zip file to the addons folder in your mission file
+ 5. add this line to the end of your mission file init.sqf
       
 ```call compile preprocessFileLineNumbers "addons\bike\init.sqf";```
- 
+
+-----
+
+##CLICK ACTIONS
+#####credits: mudzereli
+####This is used to register right click actions on items. Required by other addons. Is an overwrite so only works with Epoch 1.0.5.1
+###Installation
+ 1. download the zip file
+ 2. create an overwrites folder in your mission file if you don't already have one
+ 3. copy the click_actions folder from the overwrites folder in the zip file to the overwrites folder in your mission file
+ 4. add this line to the end of your mission file init.sqf **but before any addons that require it**
+      
+```call compile preprocessFileLineNumbers "overwrites\click_actions\init.sqf";```
+
 -----
 
 ##SUICIDE
@@ -76,7 +90,7 @@ DayZ Scripts Collection
  1. download the zip file
  2. create an addons folder in your mission file if you don't already have one
  3. copy the suicide folder from the addons folder in the zip file to the addons folder in your mission file
- 4. add this line to your mission file init.sqf
+ 4. add this line to the end of your mission file init.sqf
 
 ```call compile preprocessFileLineNumbers "addons\suicide\init.sqf";```
 
@@ -89,6 +103,6 @@ DayZ Scripts Collection
  1. download the zip file
  2. create an addons folder in your mission file if you don't already have one
  3. copy the takeclothes folder from the addons folder in the zip file to the addons folder in your mission file
- 4. add this line to your mission file init.sqf
+ 4. add this line to the end of your mission file init.sqf
       
 ```call compile preprocessFileLineNumbers "addons\takeclothes\init.sqf";```
