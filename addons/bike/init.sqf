@@ -1,5 +1,6 @@
 if (isServer) exitWith {};
 [] spawn {
+    DZE_safeVehicle = DZE_safeVehicle + ["MMT_Civ"];
     diag_log text "BIKE: waiting for login...";
     waitUntil{!isNil "PVDZE_plr_LoginRecord"};
     while {true} do {
@@ -14,7 +15,7 @@ if (isServer) exitWith {};
             //BIKE DEPLOY
             if((speed player <= 1) && _hasBikeItem && _canDo) then {
                 if (s_player_deploybike < 0) then {
-                    s_player_deploybike = player addaction[("<t color=""#33b5e5"">" + ("Deploy Bike") +"</t>"),"addons\bike\deploy.sqf","",5,false,true,"", ""];
+                    s_player_deploybike = player addaction[("<t color=""#33b5e5"">Deploy Bike</t>"),"addons\bike\deploy.sqf","",5,false,true,"", ""];
                 };
             } else {
                 player removeAction s_player_deploybike;
@@ -24,7 +25,7 @@ if (isServer) exitWith {};
             //PACK BIKE
             if((_isBike) and _canDo) then {
             if (s_player_deploybike2 < 0) then {
-                    s_player_deploybike2 = player addaction[("<t color=""#33b5e5"">" + ("Re-Pack Bike") +"</t>"),"addons\bike\pack.sqf","",5,false,true,"", ""];
+                    s_player_deploybike2 = player addaction[("<t color=""#33b5e5"">Re-Pack Bike</t>"),"addons\bike\pack.sqf","",5,false,true,"", ""];
                 };
             } else {
                 player removeAction s_player_deploybike2;
