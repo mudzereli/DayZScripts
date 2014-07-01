@@ -1,6 +1,5 @@
-if (isServer) exitWith {};
+if (isServer) exitWith {DZE_safeVehicle = DZE_safeVehicle + ["MMT_Civ"];};
 [] spawn {
-    DZE_safeVehicle = DZE_safeVehicle + ["MMT_Civ"];
     diag_log text "BIKE: waiting for login...";
     waitUntil{!isNil "PVDZE_plr_LoginRecord"};
     while {true} do {
