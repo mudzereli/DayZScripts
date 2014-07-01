@@ -106,3 +106,16 @@ DayZ Scripts Collection
  4. add this line to the end of your mission file init.sqf
       
 ```call compile preprocessFileLineNumbers "addons\takeclothes\init.sqf";```
+
+-----
+
+##SAFE ZONE
+#####credits: Infistar
+####This adds safe zones. I put this script here because the only other place I could find it is pastebin and I didn't want to lose it.
+###Installation
+ 1. download the zip file
+ 2. create an addons folder in your mission file if you don't already have one
+ 3. copy the takeclothes folder from the addons folder in the zip file to the addons folder in your mission file
+ 4. add this line to the end of your mission file init.sqf
+      
+```call compile preprocessFileLineNumbers "addons\safezones\init.sqf";```

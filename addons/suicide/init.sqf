@@ -13,7 +13,7 @@ call compile preprocessFileLineNumbers "addons\suicide\config.sqf";
             _hasWeapon = (_gun in DZ_SUICIDE_WEAPON_LIST) && (!DZ_SUICIDE_REQUIRE_BULLET || player ammo _gun > 0);
             if((speed player <= 1) && _hasWeapon && _canDo) then {
                 if (S_PLAYER_SUICIDE < 0) then {
-                    S_PLAYER_SUICIDE = player addaction["<t color=""#ff4444"">Commit Suicide</t>","addons\suicide\suicide.sqf",_gun,0,false,true,"", ""];
+                    S_PLAYER_SUICIDE = player addaction["<t color=""#ff4444"">Commit Suicide</t>","addons\suicide\suicide.sqf",_gun,1.5,false,true,"", ""];
                 };
             } else {
                 player removeAction S_PLAYER_SUICIDE;
