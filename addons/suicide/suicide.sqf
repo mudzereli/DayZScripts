@@ -4,7 +4,7 @@ private ["_position","_done","_timeLeft","_exitWith","_warning","_weapon"];
 _exitWith = "nil";
 _done = false;
 _position = position player;
-_timeLeft = DZ_SUICIDE_CANCEL_TIME;
+_timeLeft = DZE_SUICIDE_CANCEL_TIME;
 _warning = "You will commit suicide in %1 seconds. Move to cancel!";
 
 // close the gear display when player starts to commit suicide
@@ -14,11 +14,11 @@ if(!(isNull _display)) then {
     _display closeDisplay 0;
 };
 
-// make sure the player really knows
+// make sure the player really knows they are about to die
 hint format[_warning,_timeLeft];
 taskHint [format[_warning,_timeLeft], DZE_COLOR_DANGER, "taskNew"];
 
-// perform conditional checks and give the player a chance to cancel
+// perform conditional checks while giving the player a chance to cancel
 while{!_done} do {
     cutText [format[_warning,_timeLeft], "PLAIN DOWN"];
     sleep 1;
@@ -30,7 +30,7 @@ while{!_done} do {
     if((isNil "_weapon") || {!(_weapon in DZE_SUICIDE_WEAPONS)}) exitWith {
         _exitWith = "No valid guns to kill yourself with!";
     };
-    if(DZ_SUICIDE_REQUIRE_BULLET && ((player ammo _weapon) == 0)) exitWith {
+    if(DZE_SUICIDE_REQUIRE_BULLET && ((player ammo _weapon) == 0)) exitWith {
         _exitWith = "You are out of ammunition!";
     };
     if(_timeLeft <= 0) then {
@@ -39,13 +39,16 @@ while{!_done} do {
 };
 
 // if we didn't get an exit reason back, time to die!
-if (_exitWith != "nil") then {
-    taskHint["Goodbye!", DZE_COLOR_SUCCESS, "taskDone"];
+if (_exitWith == "nil") then {
+    _exitWith = "Goodbye!";
+    taskHint[_exitWith, DZE_COLOR_SUCCESS, "taskDone"];
+    cutText[_exitWith,"PLAIN DOWN"];
     player playmove (["ActsPercMstpSnonWpstDnon_suicide1B","ActsPercMstpSnonWpstDnon_suicide2B"] call BIS_fnc_selectRandom);
-    sleep 8;
+    sleep 7.5;
     player fire _weapon;
     sleep 1;
     player setDamage 1.5;
 } else {
     taskHint[_exitWith, DZE_COLOR_DANGER, "taskFailed"];
+    cutText[_exitWith,"PLAIN DOWN"];
 };
