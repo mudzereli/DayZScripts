@@ -1,5 +1,8 @@
-/* these are the weapon classes you can commit suicide with */
-DZ_SUICIDE_WEAPON_LIST = ["glock17_EP1","M9","M9SD","Makarov","MakarovSD","revolver_EP1","UZI_EP1","Sa61_EP1","Colt1911"];
+/* enable or disable this script as a whole */
+DZE_SUICIDE_ADDON_ENABLE = true;
+
+/* these are the weapon classes you can commit suicide with. */
+DZE_SUICIDE_WEAPONS = ["M9","M9SD","Makarov","MakarovSD","Sa61_EP1","UZI_EP1","UZI_SD_EP1","revolver_EP1","revolver_gold_EP1","glock17_EP1","Colt1911"];
 
 /* does suicide require you to have at least one bullet ? */
 DZ_SUICIDE_REQUIRE_BULLET = true;
