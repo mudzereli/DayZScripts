@@ -2,10 +2,14 @@ call compile preprocessFileLineNumbers "addons\suicide\config.sqf";
 // only run if enabled or server
 if (isServer || !DZE_SUICIDE_ADDON_ENABLE) exitWith {};
 diag_log text "SUICIDE: initializing...";
+DZE_CRV_SUICIDE = 2;
 // call dependency
 call compile preprocessFileLineNumbers "overwrites\click_actions\init.sqf";
-if (isNil "DZE_CLICK_ACTIONS_LOADED") exitWith {
-    diag_log text "SUICIDE: ERROR -- Click Actions Handler not loaded! You are missing an addon!";
+if (isNil "DZE_CLICK_ACTIONS_BUILD") exitWith {
+    diag_log text "SUICIDE: ERROR -- Click Actions Handler missing!";
+};
+if (DZE_CLICK_ACTIONS_BUILD != DZE_CRV_SUICIDE) exitWith {
+    diag_log text format["SUICIDE: ERROR -- Click Actions Handler loaded build #%1! Required build #%2!",DZE_CLICK_ACTIONS_BUILD,DZE_CRV_SUICIDE];
 };
 // colors for formatting messages
 DZE_COLOR_PRIMARY = [(51/255),(181/255),(229/255),1];
