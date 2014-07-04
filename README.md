@@ -69,19 +69,6 @@ DayZ Scripts Collection
 
 -----
 
-##SUICIDE
-#####credits: inspired by Grafzahl
-####This adds a suicide option to the scroll bar so players can kill themselves easier if they wish. I have completely rewritten it but it's based on Grafzahl's original suicide script.
-###Installation
- 1. download the zip file
- 2. create an addons folder in your mission file if you don't already have one
- 3. copy the suicide folder from the addons folder in the zip file to the addons folder in your mission file
- 4. add this line to the end of your mission file init.sqf
-
-```call compile preprocessFileLineNumbers "addons\suicide\init.sqf";```
-
------
-
 ##TAKE CLOTHES
 #####credits: Zabn
 ####This adds the option to take clothes from bodies. I have written in configuration options and some other things to Zabn's script.
