@@ -6,8 +6,8 @@ _onLadder = (getNumber (configFile >> "CfgMovesMaleSdr" >> "States" >> (animatio
 if (_onLadder) exitWith {cutText ["You can't perform this action while on a ladder!" , "PLAIN DOWN"]};
 if (vehicle player != player) exitWith {cutText ["You may not take clothes while in a vehicle", "PLAIN DOWN"]};
 
-player removeAction s_player_clothes;
-s_player_clothes = -1;
+player removeAction S_PLAYER_CLOTHES;
+S_PLAYER_CLOTHES = -1;
 
 _bodymodel = (typeOf _body);
 

@@ -14,20 +14,21 @@ diag_log text format["TAKECLOTHES: Added %1 base clothing matches...",count DZ_T
     diag_log text "TAKECLOTHES: waiting for login...";
     waitUntil{!isNil "PVDZE_plr_LoginRecord"};
     diag_log text "TAKECLOTHES: hooking...";
+    S_PLAYER_CLOTHES = -1;
     while {true} do {
-        if(!isNull player) then {
+        if(!isNull player && !(isNull cursorTarget)) then {
             _isTargetSelf = cursorTarget == player;
             _targetClassName = typeOf cursorTarget;
             _isTargetAlive = alive cursorTarget;
             _canStripTarget = _targetClassName in DZ_TAKECLOTHES_LIST;
             _isTargetStripped = cursorTarget getVariable["clothesTaken",false];
             if ((player distance cursorTarget) <= 5 && {!_isTargetSelf} && {!_isTargetAlive} && {_canStripTarget} && {!_isTargetStripped}) then {
-                if (s_player_clothes < 0) then {
-                    s_player_clothes = player addAction ["<t color='#ffbb33'>" + "Take Clothes" + "</t>", "addons\takeclothes\player_takeClothes.sqf",cursorTarget,-10,false,true,"",""];
+                if (S_PLAYER_CLOTHES < 0) then {
+                    S_PLAYER_CLOTHES = player addAction ["<t color='#ffbb33'>" + "Take Clothes" + "</t>", "addons\takeclothes\player_takeClothes.sqf",cursorTarget,-10,false,true,"",""];
                 };
             } else {
-                player removeAction s_player_clothes;
-                s_player_clothes = -1;
+                player removeAction S_PLAYER_CLOTHES;
+                S_PLAYER_CLOTHES = -1;
             };
         };
         sleep 2;
