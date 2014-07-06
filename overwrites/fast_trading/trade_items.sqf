@@ -64,12 +64,6 @@ while {r_autoTrade} do {
 	[1,1] call dayz_HungerThirst;
 
 	//### BEGIN MODIFIED CODE: fast trading
-	//player playActionNow "Medic";
-	
-	//_dis=20;
-	//_sfx = "repair";
-	//[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
-	//[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
 	private["_newPosition","_finished","_oldPosition"];
 	if(isNil "_oldPosition") then { _oldPosition = position player;};
 	_finished = false;
