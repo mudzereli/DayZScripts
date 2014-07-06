@@ -62,24 +62,23 @@ while {r_autoTrade} do {
 	cutText [(localize "str_epoch_player_105"), "PLAIN DOWN"];
 
 	[1,1] call dayz_HungerThirst;
+
+	//### BEGIN MODIFIED CODE: fast trading
 	//player playActionNow "Medic";
 	
 	//_dis=20;
 	//_sfx = "repair";
 	//[player,_sfx,0,false,_dis] call dayz_zombieSpeak;
 	//[player,_dis,true,(getPosATL player)] spawn player_alertZombies;
-
-	//### BEGIN MODIFIED CODE: fast trading
 	private["_newPosition","_finished","_oldPosition"];
+	if(isNil "_oldPosition") then { _oldPosition = position player;};
 	_finished = false;
-	_oldPosition = position player;
-	sleep 1;
-	_newPosition = position player;
-	if (_oldPosition select 0 == _newPosition select 0 && _oldPosition select 1 == _newPosition select 1) then {
+	sleep 2;
+	if (player distance _oldPosition <= 2) then {
 		_finished = true;
 	};
-
 	if (!_finished) exitWith { 
+		r_autoTrade = false;
 		cutText [(localize "str_epoch_player_106") , "PLAIN DOWN"];
 	};
 	//### END MODIFIED CODE: fast trading
