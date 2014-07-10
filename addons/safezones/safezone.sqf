@@ -1,8 +1,8 @@
-if (isDedicated) exitWith {};
+if ( isDedicated || isServer ) exitWith {diag_log ( "Error: Attempting to start AGN products on a server where it should not be!" );};
  
 diag_log text "[AGN] Starting Trader City Safezone Commander!";
 
-private ["_inVehicle","_antiBackpackThread","_antiBackpackThread2","_enteredVehicles"];
+private ["_inVehicle","_antiBackpackThread","_antiBackpackThread2","_enteredVehicles","_EH_Fired","_inVehicleLast", "_EH_Fired_Vehicle", "_inVehicleDamage"];
 
 disableSerialization;
 waitUntil {!isNil "dayz_animalCheck"};
@@ -10,6 +10,7 @@ diag_log text "[AGN] safezone done waiting -- initializing!";
 if ( AGN_safeZoneMessages ) then { systemChat ( "[AGN] Trader Zone Commander Loaded!" ); };
 
 _inVehicle = objNull;
+_inVehicleLast = objNull;
 _enteredVehicles = [];
 
 diag_log text "[AGN] safezone starting loop!";
@@ -19,7 +20,8 @@ while {true} do {
 	waitUntil { !canbuild };
 	diag_log text "[AGN] safezone entering no-build zone!";
 	if ( AGN_safeZoneMessages ) then { systemChat ("[AGN] Entering Trader Area - God Mode Enabled"); };
-
+	_thePlayer = player;
+	
 	if ( AGN_safeZoneGodmode ) then
 	{
 		diag_log text "[AGN] safezone enabling godmode!";
@@ -28,6 +30,14 @@ while {true} do {
 		player removeAllEventHandlers "handleDamage";
 		player addEventHandler ["handleDamage", {false}];
 		player allowDamage false;
+	};
+	
+	if ( AGN_safeZone_Players_DisableWeaponFiring ) then
+	{
+		_EH_Fired = _thePlayer addEventHandler ["Fired", {
+			systemChat ("[AGN] You can not fire your weapon in a Trader City Area");
+			NearestObject [_this select 0,_this select 4] setPos[0,0,0];
+		}];
 	};
 
 	if ( AGN_safeZone_Backpack_EnableAntiBackpack ) then
@@ -177,7 +187,35 @@ while {true} do {
 	} else {
 		waitUntil { canbuild };
 	};
-
+	
+	if ( AGN_safeZone_Vehicles_DisableMountedGuns ) then
+	{
+		while { !canBuild } do
+		{
+			sleep 0.1;
+			if ( !(isNull _inVehicle) && (vehicle player == player) ) then
+			{
+				_inVehicle removeEventHandler ["Fired", _EH_Fired_Vehicle];
+				_inVehicleLast = _inVehicle;
+				_inVehicleLast removeEventHandler ["Fired", _EH_Fired_Vehicle];
+				_inVehicle = objNull;
+			};
+			
+			if ( vehicle player != player && isNull _inVehicle ) then
+			{
+				if (AGN_safeZoneMessages) then { systemChat ( "[AGN] No Firing Vehicle Guns Enabled" ); };
+				_inVehicle = vehicle player;
+				_inVehicleDamage = getDammage _inVehicle;
+				_EH_Fired_Vehicle = _inVehicle addEventHandler ["Fired", {
+					systemChat ("[AGN] You can not fire your vehicles weapon in a Trader City Area");
+					NearestObject [_this select 0,_this select 4] setPos[0,0,0];
+				}];
+			};
+		};
+	} else {
+		waitUntil { canBuild };
+	};
+	
 	diag_log text "[AGN] safezone starting safezone exit!";
 	AGN_LastPlayerLookedAt = objNull;
 	AGN_LastPlayerLookedAtCountDown = 5;
@@ -186,6 +224,26 @@ while {true} do {
 	diag_log text "[AGN] safezone terminating backpack thread 2!";
 	terminate _antiBackpackThread2;
 	if ( AGN_safeZoneMessages ) then { systemChat ("[AGN] Exiting Trader Area - God Mode Disabled"); };
+	
+	if ( AGN_safeZone_Vehicles_DisableMountedGuns ) then
+	{
+		if ( !(isNull _inVehicle) ) then
+		{
+			if ( AGN_safeZoneMessages ) then { systemChat ( "[AGN] No Firing Vehicle Guns Disabled" ); };
+			_inVehicle removeEventHandler ["Fired", _EH_Fired_Vehicle];
+		};
+		
+		if ( !(isNull _inVehicleLast) ) then
+		{
+			if ( AGN_safeZoneMessages ) then { systemChat ( "[AGN] No Firing Vehicle Guns Disabled" ); };
+			_inVehicleLast removeEventHandler ["Fired", _EH_Fired_Vehicle];
+		};
+	};
+
+	if ( AGN_safeZone_Players_DisableWeaponFiring ) then
+	{
+		_thePlayer removeEventHandler ["Fired", _EH_Fired];
+	};
 	
 	if ( AGN_safeZoneVehicleGodmode ) then
 	{
@@ -209,4 +267,4 @@ while {true} do {
 		player removeAllEventHandlers "handleDamage";
 		player allowDamage true;
 	};
-};
+}; 
