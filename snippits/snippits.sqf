@@ -1,8 +1,8 @@
 private["_b"]; 
 { 
     _b = (configFile >> "CfgMagazines" >> _x >> "ItemActions" >> "Build" >> "create"); 
-    if(getText(_b) == (typeOf cursorTarget)) then { 
-        player addMagazine getText(_x)
+    if(!(isNull cursorTarget) && {getText(_b) == (typeOf cursorTarget)}) then { 
+        player addMagazine _x;
     };
 } forEach (
     (configfile >> "CfgMagazines") call { 
