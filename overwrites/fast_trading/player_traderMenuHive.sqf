@@ -194,12 +194,19 @@ TraderDialogShowPrices = {
 };
 
 TraderDialogBuy = {
-    private ["_index", "_item", "_data"];
+
+//### BEGIN MODIFIED CODE: buying blacklist/whitelist
+    private ["_index", "_item", "_data","_match"];
     _index = _this select 0;
     if (_index < 0) exitWith {
         cutText [(localize "str_epoch_player_6"), "PLAIN DOWN"];
     };
     _item = TraderItemList select _index;
+    _match = (_item select 0) in DZE_BUY_BLACKLIST;
+    if((_match && !DZE_BUY_BLACKLIST_IS_WHITELIST) || (!_match && DZE_BUY_BLACKLIST_IS_WHITELIST)) exitWith {
+        cutText[format["Buying %1 is DISABLED on this server!",(_item select 0)],"PLAIN DOWN"];
+    };
+//### BEGIN MODIFIED CODE: buying blacklist/whitelist
     _data = [_item select 0, _item select 3, 1, _item select 2, "buy", _item select 4, _item select 1, _item select 8];
     [0, player, '', _data] execVM (_item select 9);
     TraderItemList = -1;
