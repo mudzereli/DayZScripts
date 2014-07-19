@@ -111,7 +111,11 @@ _fnc_getWeapons = {
 		{
 			private "_weaponName";
 			_weaponName = getText (configFile >> "CfgWeapons" >> _x >> "displayName");
-			_weapons set [count _weapons, [_x, _weaponName, _turret]];
+			//###BEGIN MODIFIED CODE: remove horn from rearm
+			if (_weaponName != "Horn") then {
+				_weapons set [count _weapons, [_x, _weaponName, _turret]];
+			};
+			//###END MODIFIED CODE: remove horn from rearm
 		} forEach _weaponsTurret;
 	};
 	_weapons
